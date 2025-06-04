@@ -1,0 +1,8 @@
+matplotlib==3.10.3
+numpy==2.2.6
+pandas==2.2.3
+pillow==11.2.1
+pyarrow==20.0.0
+pyvista==0.45.2
+scipy==1.15.3
+tqdm==4.67.1
