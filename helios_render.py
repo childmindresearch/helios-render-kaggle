@@ -280,7 +280,7 @@ def render_frame_with_sensors(
     """Render a single frame with sensor data."""
     # transform mesh
     mesh.points = original_points.copy()
-    rot = R.from_quat(frame_data["quat"])
+    rot = R.from_quat(frame_data["quat"], scalar_first=True)
     transform = create_transform_matrix(rot.as_matrix())
     mesh.transform(transform, inplace=True)
 
