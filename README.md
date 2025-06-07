@@ -1,33 +1,36 @@
 
 # Helios Data Visualizer
 
-A tool for rendering sensor data from the Helios device, as provided in the [CMI - Detect Behavior with Sensor Data](https://www.kaggle.com/competitions/cmi-detect-behavior-with-sensor-data) competition featured on kaggle. Produces .mp4 video files for a specified sequence.
+A tool for rendering sensor data from the _Helios_ device, as provided in the [CMI - Detect Behavior with Sensor Data](https://www.kaggle.com/competitions/cmi-detect-behavior-with-sensor-data) competition featured on Kaggle. A discussion post for the tool can be found [here](https://www.kaggle.com/competitions/cmi-detect-behavior-with-sensor-data/discussion/583118). 
 
-**Example Video Frame:**
+The visualizer retrieves all sequences from the dataset that match the given filters. A video file (.mp4) is then produced for the sequence at the index specified by ```--sequence_index``` (default is 0, the first match).
+
+**Example Video Frame:** 
 
 ![Screenshot](./misc/example_screenshot.png)
 
-
-
-[Example Video](https://www.youtube.com/watch?v=UgHp7ph_c3E)
-
+> Watch an [example video](https://www.youtube.com/watch?v=UgHp7ph_c3E) (YouTube)
 
 
 ### Installation:
 
-1. Create a virtual environment:
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv/Scripts/activate
+1. Create a python virtual environment (recommended)
 
 2. Install dependencies: ```pip install -r requirements.txt```
 
 3. Install FFmpeg (required for video generation):
    - Windows: Download from https://ffmpeg.org/download.html and add to PATH
-   - macOS: brew install ffmpeg
-   - Linux: sudo apt install ffmpeg
+   - macOS: ```brew install ffmpeg```
+   - Linux: ```sudo apt install ffmpeg```
 
 
 ### Example Usage
+
+Render the first sequence found in the dataset:
+
+```
+python helios_render.py --csv cmi-detect-behavior-with-sensor-data/train.csv
+```
 
 Render all "Wave hello" gestures for subject SUBJ_032761:
 
@@ -35,7 +38,7 @@ Render all "Wave hello" gestures for subject SUBJ_032761:
 python helios_render.py --csv cmi-detect-behavior-with-sensor-data/train.csv --subject SUBJ_032761 --gesture "Wave hello"
 ```
 
-Render the 4th (due to zero-indexing) "Neck - pinch skin" gesture for subject SUBJ_032761:
+Render the 4th "Neck - pinch skin" gesture for subject SUBJ_032761:
 
 ```
 python helios_render.py --csv cmi-detect-behavior-with-sensor-data/train.csv --subject SUBJ_032761 --gesture "Neck - pinch skin" --sequence_index 3
@@ -43,6 +46,7 @@ python helios_render.py --csv cmi-detect-behavior-with-sensor-data/train.csv --s
 
 
 ### Arguments
+
 
 | Argument | Required | Usage |
 | ----- | ----- | ----- |
